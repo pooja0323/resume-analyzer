@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Analyzer</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        textarea {
+            width: 90%;
+            height: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top a {
+            text-decoration: none;
+            margin-left: 10px;
+            color: red;
+        }
+
+        ul {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- TOP BAR -->
+    <div class="top">
+        <h4>Welcome {{user}}</h4>
+        <div>
+            <a href="/history">History</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <h2>📄 Resume Analyzer</h2>
+
+    <!-- FORM -->
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="resume" required><br><br>
+
+        <textarea name="job_desc" placeholder="Paste Job Description here..."></textarea><br><br>
+
+        <button type="submit">Analyze</button>
+    </form>
+
+    <!-- RESULT -->
+    {% if score %}
+        <h3>Score: {{score}}%</h3>
+
+        <h4>Missing Skills:</h4>
+        <ul>
+            {% for m in missing %}
+                <li>{{m}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

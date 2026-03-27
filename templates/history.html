@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+</head>
+<body>
+
+<h2>Your Previous Results</h2>
+
+<a href="/index">Back</a>
+
+<table border="1">
+    <tr>
+        <th>Score</th>
+        <th>Missing Skills</th>
+    </tr>
+
+    {% for r in results %}
+    <tr>
+        <td>{{r.score}}%</td>
+        <td>{{r.missing_skills}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
